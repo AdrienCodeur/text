@@ -1,6 +1,3 @@
-@extends('./../layouts.master')
-
-@section('content')
 @section('title' ,'Liste des Departements')
 
     <div class="row g-3 mb-4 align-items-center justify-content-between">
@@ -222,7 +219,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-
                                 <tr>
                                     <td class="cell">#15342</td>
                                     <td class="cell"><span class="truncate">Justo feugiat neque</span></td>
@@ -252,4 +248,3 @@
 
 </div>
     <!-- Javascript -->
-@endsection

@@ -1,15 +1,13 @@
-@extends('layouts.master')
 @php
     $selected = 'selected';
 @endphp
-@section('content')
     <div class="row">
         <h1>
             @if ($employer->exists)
-                Editer un Employer
+                Editer un  Employer
                 @section('title', 'Editer un Employer')
             @else
-                Créer un Employer
+                Créer un  Employer
             @section('title', 'Créer un Employer')
         @endif
     </h1>
@@ -29,7 +27,7 @@
                 @error('nom')
                     <p class="invalid-feedback">{{ $message }}</p>
                 @enderror
-            </div>F
+            </div>
             <div class="col-md-6">
                 <label for="">email </label>
                 <input type="text" name="email" id=""
@@ -56,8 +54,7 @@
     <p class="invalid-feedback">{{ $message }}</p>
 @enderror
             </div>
-
-            <div class="col-md-5"><label for="departemen_id">Choix de Departement </label>
+            <div class="col-md-6"><label for="departemen_id">Choix de Departement </label>
                 <select name="departement_id" id="departement_id" class='form-select'>
                     <option value=""> </option>
                     @foreach ($departements as $item)
@@ -69,22 +66,22 @@
                         @endif
                     @endforeach
                 </select></div>
-
-                <div class="col-md-7">
+                <div class="col-md-12">
                     <label for="image">Photos</label>
                     <input type="file"  class="form-control" name="image" id='image'>
                 </div>
         </div>
 </div>
-
-
-
-
 <button type='submit' class='btn btn-primary mt-2'>
+
     @if ($employer->exists)
+
         Modifier
+
     @else
+
         Créer
+
     @endif
 </button>
 </div>
@@ -92,4 +89,4 @@
 </div>
 
 
-@endsection
+

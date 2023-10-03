@@ -25,7 +25,7 @@ class EmployerController extends Controller
 
     public function index(Request $request)
     {
-        $this->authorize('ListEmployer');
+        // $this->authorize('ListEmployer');
         if ($request->search) {
             $employers = Employer::where('nom', 'like', '%' . $request->search . '%')
                 ->orWhere('salaire', "like", "%".$request->search."%")
@@ -38,8 +38,7 @@ class EmployerController extends Controller
                 ->paginate(3);
         }
         $InputSearch = $request->all();
-        // dd($InputSearch) ;
-        return view('employer.index', compact('employers', 'InputSearch'));
+        return view('livewire.employer.index', compact('employers', 'InputSearch'));
     }
     public function store(Request $request)
     { $request->validate([
@@ -47,7 +46,7 @@ class EmployerController extends Controller
         'email' => 'required|string ',
         'salaire' => 'integer|',
         'image' => 'image|max:20000',
-        'departement_id' => 'integer|',
+        'departement_id' => 'integer',
     ]);
         // dd($request->all()) ;
         $employer = new Employer() ;
@@ -72,20 +71,19 @@ class EmployerController extends Controller
     {
         // dd($employer->photos) ;
         $departements = Departement::latest()->get();
-        return view('employer.form', compact('employer', 'departements'));
+        return view('livewire.employer.form', compact('employer', 'departements'));
     }
 
     public function create()
     {
         $departements = Departement::latest()->get();
         $employer = new Employer();
-        return view('employer.form', compact('employer', 'departements'));
+        return view('livewire.employer.form', compact('employer', 'departements'));
     }
-
     public function updated(Request $request, Employer $employer)
 
     {
-        $this->authorize('update',$employer) ;
+        // $this->authorize('update',$employer) ;
         $request->validate([
             'nom' => 'required|string|min:4',
             'email' => 'required|string ',

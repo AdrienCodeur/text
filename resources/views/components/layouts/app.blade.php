@@ -1,34 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<head>
-    <title>@yield('title') </title>
-
-    <!-- Meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description" content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
-    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">
-    <link rel="shortcut icon" href="favicon.ico">
-
-    <!-- FontAwesome JS-->
-    <script defer src="{{asset('assets/plugins/fontawesome/js/all.min.js')}}"></script>
-
-    <!-- App CSS -->
-    <link id="theme-style" rel="stylesheet" href="{{asset('assets/css/portal.css')}}">
-    <link id="theme-style" rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
-
-</head>
-
-<body class="app">
+        <title>{{ $title ?? 'Page Title' }}</title>
+    </head>
+    <body>
     <header class="app-header fixed-top">
         <div class="app-header-inner">
             <div class="container-fluid py-2">
                 <div class="app-header-content">
                     <div class="row justify-content-between align-items-center">
-
                         <div class="col-auto">
                             <a id="sidepanel-toggler" class="sidepanel-toggler d-inline-block d-xl-none" href="#">
                                 <svg xmlns="#" width="30" height="30"
@@ -223,14 +206,10 @@
                 <div class="app-branding">
                     <a class="app-logo" href="index.html"><img class="logo-icon me-2"
                             src="assets/images/app-logo.svg" alt="logo"><span class="logo-text">{{AppName::getAppName()}}</span></a>
-
-                </div>
-                <!--//app-branding-->
-
+                    </div>
                 <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
                     <ul class="app-menu list-unstyled accordion" id="menu-accordion">
                         <li class="nav-item">
-                            <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                             <a class="nav-link active" href="/">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door"
@@ -243,11 +222,9 @@
                                 </span>
                                 <span class="nav-link-text">Dashboard</span>
                             </a>
-                            <!--//nav-link-->
                         </li>
                          <li class="nav-item">
-                            <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                            <a class="nav-link " href="{{route('payment.list')}}">
+                            <a class="nav-link " href="#">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door"
                                         fill="currentColor" xmlns="#">
@@ -382,8 +359,6 @@
     <div class="app-wrapper">
         <div class="app-content pt-3 p-md-3 p-lg-4">
             <div class="container-xl">
-
-                
                 @if(session('success'))
                 <p class="text-white text-capitalize fw-bold bg-info p-2">
                     {{session('success')}}
@@ -418,6 +393,10 @@
 
 
     <!-- Javascript -->
+
+        {{ $slot }}
+
+        
     <script src="{{asset('assets/plugins/popper.min.js')}}"></script>
     <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
 
@@ -427,7 +406,10 @@
 
     <!-- Page Specific JS -->
     <script src="{{asset('assets/js/app.js')}}"></script>
+    <script defer src="{{asset('assets/plugins/fontawesome/js/all.min.js')}}"></script>
+    <!-- App CSS -->
+    <link id="theme-style" rel="stylesheet" href="{{asset('assets/css/portal.css')}}">
+    <link id="theme-style" rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
 
-</body>
-
+    </body>
 </html>

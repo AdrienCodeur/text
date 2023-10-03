@@ -1,8 +1,4 @@
-@extends('./../layouts.master')
-
-@section('content')
 @section('title' ,'Liste des Employers')
-
     <div class="row g-3 mb-4 align-items-center justify-content-between">
         <div class="col-auto">
             <h1 class="app-page-title mb-0">Employer</h1>
@@ -25,18 +21,12 @@
 
                         </form>
 
-                    </div>
-                    <!--//col-->
-                   
+                    </div>                   
                     <div class="col-auto">
-
                         <a class="btn app-btn-secondary" href="{{route('employer.create')}}">
                         <span class="fas fa-user fa-xl"></span>
-
                               Ajouter un Employer
-
                     </a>
-
                     </div>
                 </div>
                 <!--//row-->
@@ -73,12 +63,13 @@
 @foreach ($employers as $item)
 <tr>
 
-    <td>@if($item->sexe === 'F')
+    <td>
+    @if($item->sexe === 'F')
 <img src="{{asset('assets/images/femme.png')}}" alt="F" class='img-fluid rounded ' style="width:24px;">
-@else
+    @else
 <img src="{{asset('assets/images/homme-daffaire.png')}}" alt="F" class='img-fluid rounded ' style="width:24px;">
 
-        @endif
+    @endif
 
     </td>
     <td>{{$item->departement->nom}}</td>
@@ -136,4 +127,3 @@
 
 </div>
     <!-- Javascript -->
-@endsection
